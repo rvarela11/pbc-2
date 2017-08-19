@@ -1,5 +1,16 @@
-# [Create React App](https://github.com/facebookincubator/create-react-app) with Redux
+# Patriot Boot Camp Alumni Directory
 
-### About
+# About
 
-This is a boilerplate using the create react app library with redux. As an example, I have provided a simple chat box where you can add and delete a message.
+* A public-facing online directory of alumni and their companies.
+
+* A CRM back-end to power it.
+
+* Technology Stack:
+  * React/Redux
+  * Node.js/Express
+  * PostgreSQL
+  * AWS (Elastic Beanstalk for Server, S3 for Front-End)
+
+## Tosin Awofeso - https://github.com/midastouchprd
+## Robert Varela - https://github.com/rvarela11
