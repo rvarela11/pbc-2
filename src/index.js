@@ -6,25 +6,17 @@ import { Provider } from 'react-redux';
 import { reducer } from './reducers';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import App from './components/App'
-import Page1 from './components/Page1';
-import Page1User from './components/Page1-user';
+import AlumniHomePage from './components/AlumniHomePage';
+import CompanyHomePage from './components/CompanyHomePage';
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));
-
-const Page1Split = () => (
-  <Switch>
-    <Route exact path="/page1" component={Page1} />
-    <Route path="/page1/:user" component={Page1User} />
-  </Switch>
-)
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/page1" component={Page1Split} />
+        <Route exact path="/" component={AlumniHomePage} />
+        <Route exact path="/company" component={CompanyHomePage} />
       </Switch>
     </Router>
   </Provider>,

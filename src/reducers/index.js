@@ -1,22 +1,14 @@
 const initialState = {
-  messages: ["Howdy"]
+  navOption: "Alumni"
 };
 
 export function reducer (state = initialState, action) {
   switch (action.type) {
-    case 'ADDMESSAGE':
+    case 'NAVOPTION':
     return {
-          messages: state.messages.concat(action.message),
+          ...state,
+          navOption: action.navOption
         }
-    case 'DELETEMESSAGE':
-    return {
-      messages: [
-        ...state.messages.slice(0, action.index),
-        ...state.messages.slice(
-          action.index + 1, state.messages.length
-        ),
-      ],
-    };
     default:
         return state;
   }

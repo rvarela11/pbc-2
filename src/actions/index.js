@@ -1,15 +1,7 @@
-export const ADDMESSAGE = 'ADDMESSAGE';
-export function addMessage (message) {
+export const NAVOPTION = 'NAVOPTION';
+export function navClickedOption (navOption) {
   return {
-    type: ADDMESSAGE,
-    message
-  }
-}
-
-export const DELETEMESSAGE = 'DELETEMESSAGE';
-export function deleteMessage (index) {
-  return {
-    type: DELETEMESSAGE,
-    index
+    type: NAVOPTION,
+    navOption
   }
 }
