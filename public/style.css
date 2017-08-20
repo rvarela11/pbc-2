@@ -14,7 +14,6 @@ nav,
 .nav-bar-right-section {
   display: flex !important;
   flex-direction: row;
-  background-color: #fff !important;
 }
 nav > * {
   flex: 1;
@@ -31,9 +30,6 @@ nav > * {
 .nav-bar-right-section li:nth-child(2) {
   border-left: 1px solid #ccc;
 }
-.nav-bar-right-section li a {
-  color: #000 !important;
-}
 
 /*----------------------------*/
 /*---------- Header ----------*/
@@ -48,4 +44,22 @@ header h1 {
   text-align: center;
   margin: 0;
   margin-top: 1px;
+}
+
+/*------------------------------------------*/
+/*---------- Search Bar & Filters ----------*/
+/*------------------------------------------*/
+
+.container-search-filters {
+  width: 85%;
+  margin: auto;
+}
+
+/*--------------------------------*/
+/*---------- Search Bar ----------*/
+/*--------------------------------*/
+
+input[type=search]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #47a2f8 !important;
+  box-shadow: 0 1px 0 0 #47a2f8 !important;
 }

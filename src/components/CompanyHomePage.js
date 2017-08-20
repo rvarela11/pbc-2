@@ -6,12 +6,16 @@ import { navClickedOption } from '../actions/index';
 
 import Nav from './Nav';
 import Header from './Header';
+import SearchBar from './SearchBar';
 
 class CompanyHomePage extends Component {
   render() {
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header/>
+      <div className="container-search-filters">
+        <SearchBar addMessage={this.props.addMessage}/>
+      </div>
     </div>
   }
 }
