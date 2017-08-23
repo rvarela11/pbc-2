@@ -50,7 +50,7 @@ header h1 {
 /*---------- Search Bar & Filters ----------*/
 /*------------------------------------------*/
 
-.container-search-filters {
+.search-filters-card-overall-container {
   width: 85%;
   margin: auto;
 }
@@ -62,4 +62,79 @@ header h1 {
 input[type=search]:not(.browser-default):focus:not([readonly]) {
   border-bottom: 1px solid #47a2f8 !important;
   box-shadow: 0 1px 0 0 #47a2f8 !important;
+}
+
+/*-----------------------------------*/
+/*---------- Filter Button ----------*/
+/*-----------------------------------*/
+
+.filter-button-overall-container {
+  display: flex;
+  flex-direction: row;
+}
+.filter-button-individual-container {
+  flex: 1;
+}
+.filter-button {
+  width: 100%;
+  border-left: 1px solid #ccc !important;
+}
+
+/*--------------------------*/
+/*---------- Card ----------*/
+/*--------------------------*/
+
+.card-overall-container {
+  margin-top: 5%;
+}
+.card-outline {
+  width: 75%;
+  margin: auto;
+}
+.card-image {
+  margin: 2% 2% 0 2%;
+}
+.card-image img {
+  height: 158px;
+  width: 158px !important;
+  border-radius: 20px !important;
+}
+.card-content ul {
+  margin: 0;
+}
+.card-content--display {
+  display: flex;
+  flex-direction: row;
+}
+.card-content-name li h4 {
+  margin: 0;
+}
+.card-content-name li:nth-child(2) h4 {
+  margin-left: 10px;
+}
+.card-content ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.card-content__cohort i {
+  margin-right: 7px;
+}
+.card-content__email i {
+  margin-right: 11px;
+}
+.card-content__location i {
+  margin-right: 13px;
+}
+.card-content ul li h6,.card-content ul li a {
+  font-size: 1.25em;
+}
+.card-image-techstars {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+}
+.card-image-techstars img {
+  width: 60px;
+  height: 50px;
 }

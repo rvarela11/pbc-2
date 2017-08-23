@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunkMiddleware from 'redux-thunk';
+import promise from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { reducer } from './reducers';
@@ -9,7 +10,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AlumniHomePage from './components/AlumniHomePage';
 import CompanyHomePage from './components/CompanyHomePage';
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const store = createStore(reducer, applyMiddleware(thunkMiddleware, promise));
 
 ReactDOM.render(
   <Provider store={store}>

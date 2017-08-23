@@ -13,9 +13,9 @@ class CompanyHomePage extends Component {
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header/>
-      <div className="container-search-filters">
-        <SearchBar addMessage={this.props.addMessage}/>
-      </div>
+        <div className="container-search-filters">
+          <SearchBar addMessage={this.props.addMessage}/>
+        </div>
     </div>
   }
 }

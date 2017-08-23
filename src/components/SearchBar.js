@@ -3,16 +3,21 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
 
   state = {
-    inputMessage: ''
+    searchInput: ''
   }
 
   handleChange = (e) => {
-    // this.setState({ inputMessage: e.target.value });
+    this.setState({ searchInput: e.target.value});
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    // this.props.addMessage(this.state.inputMessage);
-    // this.setState({ inputMessage: '' });
+    let splitName = this.state.searchInput.split(" ");
+    let upperCaseName = [];
+    splitName.forEach((name)=> {
+      upperCaseName.push(name[0].charAt(0).toUpperCase() + name.slice(1));
+    });
+    this.props.searchBarName(upperCaseName.join(" "));
+    this.setState({searchTerm: ""});
   }
 
   render () {
