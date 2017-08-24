@@ -18,6 +18,10 @@ class SearchBar extends Component {
     });
     this.props.searchBarName(upperCaseName.join(" "));
     this.setState({searchInput: ""});
+
+    // Clean input search
+    const search_input = document.getElementById("search");
+    search_input.value = "";
   }
 
   render () {
