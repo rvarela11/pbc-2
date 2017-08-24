@@ -12,7 +12,7 @@ class Card extends Component {
                 <div className="card-stacked">
                   <div className="card-content">
                     <ul>
-                      <div className="card-content--display card-content-name">
+                      <div className="card-content-display card-content-name">
                         <li><h4>{info.first_name}</h4></li>
                         <li><h4>{info.last_name}</h4></li>
                       </div>

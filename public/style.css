@@ -116,10 +116,14 @@ input[type=search]:not(.browser-default):focus:not([readonly]) {
   width: 158px !important;
   border-radius: 20px !important;
 }
+.card-content {
+  display: flex;
+  flex-direction: row;
+}
 .card-content ul {
   margin: 0;
 }
-.card-content--display {
+.card-content-display {
   display: flex;
   flex-direction: row;
 }
@@ -147,9 +151,10 @@ input[type=search]:not(.browser-default):focus:not([readonly]) {
   font-size: 1.25em;
 }
 .card-image-techstars {
-  width: 15%;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 .card-image-techstars img {
   width: 60px;
