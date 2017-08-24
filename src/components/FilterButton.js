@@ -10,8 +10,8 @@ import FilterButtonOptionBranches from './FilterButtonOptionBranches';
 class FilterButton extends Component {
 
   render() {
-    let showRightOption;
 
+    let showRightOption;
     switch (this.props.filterName) {
       case 'TECHSTARS': showRightOption = <FilterButtonOptionTechstar checkboxOptionData={this.checkboxOptionData}/>
         break;

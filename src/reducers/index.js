@@ -1,6 +1,7 @@
 const initialState = {
   navOption: 'Alumni',
   results: [],
+  filterButtonOptions: [],
   filterNames: ['TECHSTARS', 'COHORT', 'STATUS', 'BRANCH'],
   techstarsFilterOptions: ['Yes', 'No', 'Both'],
   techstarsFilterButtonClickedStatus: false,
@@ -14,7 +15,8 @@ export function reducer (state = initialState, action) {
     case 'GetResultsOnLoad':
     return {
           ...state,
-          results: action.payload.data
+          results: action.payload.data,
+          filterButtonOptions: action.payload.data
         };
     case 'NavOption':
     return {

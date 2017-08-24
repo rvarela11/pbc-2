@@ -6,14 +6,14 @@ class FilterButtonOptionBranches extends Component {
   checkboxAnswer = (e) => {
     this.props.checkboxOptionData(e.target.name, e.target.value,e.target.checked);
   }
-  
+
   render() {
 
     let branchesFilterOptions;
-    if(!this.props.results.branches) {
+    if(!this.props.filterButtonOptions.branches) {
       branchesFilterOptions = [];
     } else {
-      branchesFilterOptions = this.props.results.branches;
+      branchesFilterOptions = this.props.filterButtonOptions.branches;
     }
 
     return <div>
@@ -33,7 +33,7 @@ class FilterButtonOptionBranches extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      results: state.results,
+      filterButtonOptions: state.filterButtonOptions,
       branchFilterButtonClickedStatus: state.branchFilterButtonClickedStatus
     };
 };

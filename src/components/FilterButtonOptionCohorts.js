@@ -8,12 +8,11 @@ class FilterButtonOptionCohorts extends Component {
   }
 
   render() {
-    
     let cohortsFilterOptions;
-    if(!this.props.results.cohorts) {
+    if(!this.props.filterButtonOptions.cohorts) {
       cohortsFilterOptions = [];
     } else {
-      cohortsFilterOptions = this.props.results.cohorts;
+      cohortsFilterOptions = this.props.filterButtonOptions.cohorts;
     }
 
     return <div>
@@ -33,7 +32,7 @@ class FilterButtonOptionCohorts extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      results: state.results,
+      filterButtonOptions: state.filterButtonOptions,
       cohortFilterButtonClickedStatus: state.cohortFilterButtonClickedStatus
     };
 };
