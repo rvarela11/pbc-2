@@ -17,7 +17,7 @@ class SearchBar extends Component {
       upperCaseName.push(name[0].charAt(0).toUpperCase() + name.slice(1));
     });
     this.props.searchBarName(upperCaseName.join(" "));
-    this.setState({searchTerm: ""});
+    this.setState({searchInput: ""});
   }
 
   render () {

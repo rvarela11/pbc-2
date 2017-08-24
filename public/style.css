@@ -80,12 +80,29 @@ input[type=search]:not(.browser-default):focus:not([readonly]) {
   border-left: 1px solid #ccc !important;
 }
 
+/*-----------------------------------------*/
+/*---------- Search/Reset Button ----------*/
+/*-----------------------------------------*/
+
+.search-reset-button-overall-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2%;
+}
+.search-button {
+  width: 168px !important;
+}
+.reset-button a {
+  color: #fff;
+}
+
 /*--------------------------*/
 /*---------- Card ----------*/
 /*--------------------------*/
 
 .card-overall-container {
-  margin-top: 5%;
+  margin-top: 4%;
 }
 .card-outline {
   width: 75%;

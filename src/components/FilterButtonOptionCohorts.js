@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class FilterButtonOptionCohorts extends Component {
-  render() {
 
+  checkboxAnswer = (e) => {
+    this.props.checkboxOptionData(e.target.name, e.target.value,e.target.checked);
+  }
+
+  render() {
+    
     let cohortsFilterOptions;
     if(!this.props.results.cohorts) {
       cohortsFilterOptions = [];

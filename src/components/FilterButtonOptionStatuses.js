@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class FilterButtonOptionStatuses extends Component {
+
+  checkboxAnswer = (e) => {
+    this.props.checkboxOptionData(e.target.name, e.target.value,e.target.checked);
+  }
+  
   render() {
 
     let statusesFilterOptions;

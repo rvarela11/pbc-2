@@ -30,6 +30,17 @@ export function searchBarName (name) {
       }
 }
 
+export const GetResultsFromFilterButtons = 'GetResultsFromFilterButtons';
+export function getResultsFromFilterButtons (data) {
+  const request = axios.post(`${ROOT_URL}/filters/`, data);
+  return {
+    type: GetResultsFromFilterButtons,
+    payload: request
+  }
+}
+
+
+
 export const techstarsFilterClickAnswer = 'techstarsFilterClickAnswer';
 export function techstarsFilterButtonClicked (answer) {
   return {

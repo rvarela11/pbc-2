@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class FilterButtonOptionTechstar extends Component {
+
+  checkboxAnswer = (e) => {
+    this.props.checkboxOptionData(e.target.name, e.target.value,e.target.checked);
+  }
+
   render() {
     return <div>
         {this.props.techstarsFilterButtonClickedStatus &&

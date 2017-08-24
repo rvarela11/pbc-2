@@ -9,6 +9,27 @@ import FilterButtonOptionBranches from './FilterButtonOptionBranches';
 
 class FilterButton extends Component {
 
+  render() {
+    let showRightOption;
+
+    switch (this.props.filterName) {
+      case 'TECHSTARS': showRightOption = <FilterButtonOptionTechstar checkboxOptionData={this.checkboxOptionData}/>
+        break;
+      case 'COHORT': showRightOption = <FilterButtonOptionCohorts checkboxOptionData={this.checkboxOptionData}/>;
+        break;
+      case 'STATUS': showRightOption = <FilterButtonOptionStatuses checkboxOptionData={this.checkboxOptionData}/>;
+        break;
+      case 'BRANCH': showRightOption = <FilterButtonOptionBranches checkboxOptionData={this.checkboxOptionData}/>;
+        break;
+      default:
+    }
+
+    return <div>
+      <h6 className="waves-effect waves-light btn black white-text filter-button" onClick={this.buttonClicked}> {this.props.filterName} </h6>
+      {showRightOption}
+    </div>
+  }
+
   buttonClicked = () => {
     switch (this.props.filterName) {
       case 'TECHSTARS': this.props.techstarsFilterButtonClicked(!this.props.techstarsFilterButtonClickedStatus);
@@ -23,27 +44,10 @@ class FilterButton extends Component {
     }
   }
 
-  render() {
-    let showRightOption;
-
-    switch (this.props.filterName) {
-      case 'TECHSTARS':
-      showRightOption = <FilterButtonOptionTechstar/>
-        break;
-      case 'COHORT': showRightOption = <FilterButtonOptionCohorts/>;
-        break;
-      case 'STATUS': showRightOption = <FilterButtonOptionStatuses />;
-        break;
-      case 'BRANCH': showRightOption = <FilterButtonOptionBranches />;
-        break;
-      default:
-    }
-
-    return <div>
-      <h6 className="waves-effect waves-light btn black white-text filter-button" onClick={this.buttonClicked}> {this.props.filterName} </h6>
-      {showRightOption}
-    </div>
+  checkboxOptionData = (checkboxName, checkboxValue, checkboxChecked) => {
+    this.props.checkboxOptionDataToFilterContainer(checkboxName, checkboxValue, checkboxChecked);
   }
+
 }
 
 const mapDispatchToProps = (dispatch) => {
