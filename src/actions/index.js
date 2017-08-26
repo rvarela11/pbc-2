@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // API URLs
 const ROOT_URL = 'http://alumniapi.pp2epi6m2i.us-east-1.elasticbeanstalk.com/api/founders';
-// const ROOT_URL_COMPANY = 'http://alumniapi.pp2epi6m2i.us-east-1.elasticbeanstalk.com/api/companies';
+const ROOT_URL_COMPANY = 'http://alumniapi.pp2epi6m2i.us-east-1.elasticbeanstalk.com/api/companies';
 
 export const GetResultsOnLoad = 'GetResultsOnLoad';
 export function getResultsOnLoad () {
@@ -12,6 +12,17 @@ export function getResultsOnLoad () {
     payload: request
   }
 }
+
+export const GetCompanyResultsOnLoad = 'GetResultsOnLoad';
+export function getCompanyResultsOnLoad () {
+  const request = axios.get(ROOT_URL_COMPANY);
+  return {
+    type: GetCompanyResultsOnLoad,
+    payload: request
+  }
+}
+
+
 
 export const NavOption = 'NavOption';
 export function navClickedOption (navOption) {

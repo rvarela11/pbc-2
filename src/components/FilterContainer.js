@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchBarName, getResultsFromFilterButtons } from '../actions/index';
-import { Link } from 'react-router-dom';
+import { searchBarName, getResultsFromFilterButtons, techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked } from '../actions/index';
+// import { Link } from 'react-router-dom';
 
 // Components
 import SearchBar from './SearchBar';
@@ -31,7 +31,7 @@ class FilterContainer extends Component {
         </div>
         <div className="search-reset-button-overall-container">
           <button className="waves-effect waves-light btn search-button" onClick={this.searchButtonFilter}>Search</button>
-          <button className="waves-effect waves-light btn red darken-1 reset-button"><Link to="/company">Reset Filters</Link></button>
+          <button className="waves-effect waves-light btn red darken-1 reset-button" onClick={this.resetResults}>Reset Filters</button>
         </div>
     </div>
   }
@@ -76,12 +76,24 @@ class FilterContainer extends Component {
     this.props.getResultsFromFilterButtons(this.state.filter_option_arrays);
   }
 
+  resetResults = () => {
+    this.props.resetResults();
+    this.props.techstarsFilterButtonClicked(false);
+    this.props.cohortFilterButtonClicked(false);
+    this.props.statusFilterButtonClicked(false);
+    this.props.branchFilterButtonClicked(false);
+  }
+
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         searchBarName: (name) => dispatch(searchBarName(name)),
         getResultsFromFilterButtons: (data) => dispatch(getResultsFromFilterButtons(data)),
+        techstarsFilterButtonClicked: (status) => dispatch(techstarsFilterButtonClicked(status)),
+        cohortFilterButtonClicked: (status) => dispatch(cohortFilterButtonClicked(status)),
+        statusFilterButtonClicked: (status) => dispatch(statusFilterButtonClicked(status)),
+        branchFilterButtonClicked: (status) => dispatch(branchFilterButtonClicked(status)),
     };
 };
 

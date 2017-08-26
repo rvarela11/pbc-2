@@ -6,7 +6,7 @@ import { getResultsOnLoad, navClickedOption } from '../actions/index';
 import Nav from './Nav';
 import Header from './Header';
 import FilterContainer from './FilterContainer';
-import Card from './Card';
+import CardAlumni from './CardAlumni';
 
 class AlumniHomePage extends Component {
 
@@ -28,11 +28,11 @@ class AlumniHomePage extends Component {
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header/>
       <div className="search-filters-card-overall-container">
-        <FilterContainer/>
+        <FilterContainer resetResults={this.props.getResultsOnLoad}/>
         <div className="card-overall-container">
           {founders.map((info, index) => {
             return (
-              <Card info={info} key={index}/>
+              <CardAlumni info={info} key={index}/>
             )})}
         </div>
       </div>

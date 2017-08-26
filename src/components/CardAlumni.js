@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Card extends Component {
+class CardAlumni extends Component {
   render() {
     const info = this.props.info;
     return (
@@ -20,7 +20,7 @@ class Card extends Component {
                       <li className="card-content__email"><i className="fa fa-envelope" aria-hidden="true"></i><h6>{info.email}</h6></li>
                       <li className="card-content__location"><i className="fa fa-globe" aria-hidden="true"></i><h6>{info.state}</h6></li>
                     </ul>
-                    <div className="card-image-techstars" style={{display: info.techstars ? 'inline-block' : 'none'}}>
+                    <div className="card-image-techstars" style={{display: info.techstars ? 'flex' : 'none'}}>
                       <img alt="techstars logo" src="../images/techstars-logo-3.png"/>
                     </div>
                   </div>
@@ -37,4 +37,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default CardAlumni;

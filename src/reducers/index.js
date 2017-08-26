@@ -18,6 +18,11 @@ export function reducer (state = initialState, action) {
           results: action.payload.data,
           filterButtonOptions: action.payload.data
         };
+    case 'GetCompanyResultsOnLoad':
+    return {
+          ...state,
+          results: action.payload.data
+        };
     case 'NavOption':
     return {
           ...state,

@@ -97,9 +97,9 @@ input[type=search]:not(.browser-default):focus:not([readonly]) {
   color: #fff;
 }
 
-/*--------------------------*/
-/*---------- Card ----------*/
-/*--------------------------*/
+/*--------------------------------*/
+/*---------- CardAlumni ----------*/
+/*--------------------------------*/
 
 .card-overall-container {
   margin-top: 4%;
@@ -152,11 +152,21 @@ input[type=search]:not(.browser-default):focus:not([readonly]) {
 }
 .card-image-techstars {
   width: 100%;
-  display: flex !important;
   flex-direction: row;
   justify-content: flex-end;
 }
 .card-image-techstars img {
   width: 60px;
   height: 50px;
+}
+
+/*---------------------------------*/
+/*---------- CardCompany ----------*/
+/*---------------------------------*/
+
+.card-content__company-name-founder li:first-child i {
+  margin-right: 15px;
+}
+.card-content__company-name-founder li:last-child {
+  margin-left: 1% !important;
 }
