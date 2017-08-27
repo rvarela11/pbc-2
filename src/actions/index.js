@@ -34,6 +34,7 @@ export function navClickedOption (navOption) {
 
 export const SearchBarName = 'SearchBarName';
 export function searchBarName (name) {
+  console.log(name);
   const request = axios.get(`${ROOT_URL}/search/${name}`);
       return {
         type: SearchBarName,

@@ -6,17 +6,17 @@ import { getResultsOnLoad, navClickedOption } from '../actions/index';
 import Nav from './Nav';
 import Header from './Header';
 import FilterContainer from './FilterContainer';
-import CardAlumni from './CardAlumni';
+import Card from './Card';
 
 class AlumniHomePage extends Component {
 
   componentDidMount () {
-    //function to get the array with all the users data
+    //function to get the array with all the founders data
     this.props.getResultsOnLoad();
   }
 
   render() {
-
+    //Set founders array to prepare the Cards. The results is first undefined so it is set to an emtpy array.
     let founders;
     if(!this.props.results.founders) {
       founders = [];
@@ -26,13 +26,13 @@ class AlumniHomePage extends Component {
 
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
-      <Header/>
+      <Header pathname={this.props.location.pathname}/>
       <div className="search-filters-card-overall-container">
         <FilterContainer resetResults={this.props.getResultsOnLoad}/>
         <div className="card-overall-container">
           {founders.map((info, index) => {
             return (
-              <CardAlumni info={info} key={index}/>
+              <Card pathname={this.props.location.pathname} info={info} key={index}/>
             )})}
         </div>
       </div>

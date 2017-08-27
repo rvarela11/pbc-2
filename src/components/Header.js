@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-class Header extends Component {
-  render() {
-    return (
-      <header style={{backgroundColor: (this.props.navOption === "Alumni") ? '#47a2f8' : '#ff5a5f'}}>
-          <h1>{this.props.navOption} Directory</h1>
-      </header>
-    )
+export default function Header (props) {
+  let headerName;
+
+  if (props.pathname === "/") {
+    headerName = 'Alumni';
+  } else {
+    headerName = 'Company';
   }
+
+  return (
+    <header style={{backgroundColor: (props.pathname === "/") ? '#47a2f8' : '#ff5a5f'}}>
+        <h1>{headerName} Directory</h1>
+    </header>
+  )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        navOption: state.navOption
-    };
-};
-
-export default connect(mapStateToProps,null)(Header);

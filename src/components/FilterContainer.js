@@ -21,7 +21,7 @@ class FilterContainer extends Component {
 
   render() {
     return <div>
-        <SearchBar addMessage={this.props.addMessage} searchBarName={this.props.searchBarName}/>
+        <SearchBar searchBarName={this.props.searchBarName}/>
         <div className="filter-button-overall-container">
           {this.props.filterNames.map((filterName, index) => {
             return <div key={index} className='filter-button-individual-container'>

@@ -11,6 +11,8 @@ class SearchBar extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+
+    // Uppercase the first letter of every name
     let splitName = this.state.searchInput.split(" ");
     let upperCaseName = [];
     splitName.forEach((name)=> {

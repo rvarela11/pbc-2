@@ -6,7 +6,7 @@ import { getCompanyResultsOnLoad, getResultsOnLoad, navClickedOption } from '../
 import Nav from './Nav';
 import Header from './Header';
 import FilterContainer from './FilterContainer';
-import CardCompany from './CardCompany';
+import Card from './Card';
 
 class CompanyHomePage extends Component {
 
@@ -24,17 +24,15 @@ class CompanyHomePage extends Component {
       companies = this.props.results.companies;
     }
 
-    console.log(companies);
-
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
-      <Header/>
+      <Header pathname={this.props.location.pathname}/>
       <div className="search-filters-card-overall-container">
         <FilterContainer resetResults={this.props.getResultsOnLoad}/>
         <div className="card-overall-container">
           {companies.map((info, index) => {
             return (
-              <CardCompany info={info} key={index}/>
+              <Card pathname={this.props.location.pathname} info={info} key={index}/>
             )})}
         </div>
       </div>
