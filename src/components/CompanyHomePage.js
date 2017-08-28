@@ -28,7 +28,7 @@ class CompanyHomePage extends Component {
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header pathname={this.props.location.pathname}/>
       <div className="search-filters-card-overall-container">
-        <FilterContainer resetResults={this.props.getResultsOnLoad} pathname={this.props.location.pathname}/>
+        <FilterContainer resetResults={this.props.getResultsOnLoad} resetResultsCompany={this.props.getCompanyResultsOnLoad} pathname={this.props.location.pathname}/>
         <div className="card-overall-container">
           {companies.map((info, index) => {
             return (

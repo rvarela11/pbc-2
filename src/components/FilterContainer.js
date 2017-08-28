@@ -77,7 +77,12 @@ class FilterContainer extends Component {
   }
 
   resetResults = () => {
-    this.props.resetResults();
+    if (this.props.pathname === "/") {
+      this.props.resetResults();
+    } else {
+      this.props.resetResultsCompany();
+    }
+
     this.props.techstarsFilterButtonClicked(false);
     this.props.cohortFilterButtonClicked(false);
     this.props.statusFilterButtonClicked(false);
