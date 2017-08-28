@@ -12,7 +12,6 @@ export function getResultsOnLoad () {
     payload: request
   }
 }
-
 export const GetCompanyResultsOnLoad = 'GetResultsOnLoad';
 export function getCompanyResultsOnLoad () {
   const request = axios.get(ROOT_URL_COMPANY);
@@ -21,8 +20,6 @@ export function getCompanyResultsOnLoad () {
     payload: request
   }
 }
-
-
 
 export const NavOption = 'NavOption';
 export function navClickedOption (navOption) {
@@ -34,10 +31,18 @@ export function navClickedOption (navOption) {
 
 export const SearchBarName = 'SearchBarName';
 export function searchBarName (name) {
-  console.log(name);
   const request = axios.get(`${ROOT_URL}/search/${name}`);
       return {
         type: SearchBarName,
+        payload: request
+      }
+}
+export const SearchBarNameCompany = 'SearchBarNameCompany';
+export function searchBarNameCompany (name) {
+  console.log(name);
+  const request = axios.get(`${ROOT_URL_COMPANY}/search/${name}`);
+      return {
+        type: SearchBarNameCompany,
         payload: request
       }
 }

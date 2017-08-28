@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchBarName, getResultsFromFilterButtons, techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked } from '../actions/index';
+import { searchBarName, searchBarNameCompany, getResultsFromFilterButtons, techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked } from '../actions/index';
 // import { Link } from 'react-router-dom';
 
 // Components
@@ -21,7 +21,7 @@ class FilterContainer extends Component {
 
   render() {
     return <div>
-        <SearchBar searchBarName={this.props.searchBarName}/>
+        <SearchBar pathname={this.props.pathname} searchBarName={this.props.searchBarName} searchBarNameCompany={this.props.searchBarNameCompany}/>
         <div className="filter-button-overall-container">
           {this.props.filterNames.map((filterName, index) => {
             return <div key={index} className='filter-button-individual-container'>
@@ -89,6 +89,7 @@ class FilterContainer extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         searchBarName: (name) => dispatch(searchBarName(name)),
+        searchBarNameCompany: (name) => dispatch(searchBarNameCompany(name)),
         getResultsFromFilterButtons: (data) => dispatch(getResultsFromFilterButtons(data)),
         techstarsFilterButtonClicked: (status) => dispatch(techstarsFilterButtonClicked(status)),
         cohortFilterButtonClicked: (status) => dispatch(cohortFilterButtonClicked(status)),

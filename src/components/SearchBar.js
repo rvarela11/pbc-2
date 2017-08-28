@@ -18,7 +18,11 @@ class SearchBar extends Component {
     splitName.forEach((name)=> {
       upperCaseName.push(name[0].charAt(0).toUpperCase() + name.slice(1));
     });
-    this.props.searchBarName(upperCaseName.join(" "));
+    if (this.props.pathname === "/") {
+      this.props.searchBarName(upperCaseName.join(" "));
+    } else {
+      this.props.searchBarNameCompany(upperCaseName.join(" "));
+    }
     this.setState({searchInput: ""});
 
     // Clean input search
