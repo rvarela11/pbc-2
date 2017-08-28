@@ -2,12 +2,15 @@ const initialState = {
   navOption: 'Alumni',
   results: [],
   filterButtonOptions: [],
-  filterNames: ['TECHSTARS', 'COHORT', 'STATUS', 'BRANCH'],
+  filterNamesAlumni: ['TECHSTARS', 'COHORT', 'STATUS', 'BRANCH'],
+  filterNamesCompany: ['TECHSTARS', 'PAST FUNDING', 'STAGE'],
   techstarsFilterOptions: ['Yes', 'No', 'Both'],
   techstarsFilterButtonClickedStatus: false,
   cohortFilterButtonClickedStatus: false,
   statusFilterButtonClickedStatus: false,
   branchFilterButtonClickedStatus: false,
+  pastFundingFilterButtonClickedStatus: false,
+  stageFilterButtonClickedStatus: false,
 };
 
 export function reducer (state = initialState, action) {
@@ -62,6 +65,16 @@ export function reducer (state = initialState, action) {
     return {
           ...state,
           branchFilterButtonClickedStatus: action.answer
+        };
+    case 'pastFundingFilterClickAnswer':
+    return {
+          ...state,
+          pastFundingFilterButtonClickedStatus: action.answer
+        };
+    case 'stageFilterClickAnswer':
+    return {
+          ...state,
+          stageFilterButtonClickedStatus: action.answer
         };
     default:
         return state;

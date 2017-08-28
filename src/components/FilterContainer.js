@@ -20,10 +20,19 @@ class FilterContainer extends Component {
   }
 
   render() {
+
+    let filterNames;
+
+    if (this.props.pathname === "/") {
+      filterNames = this.props.filterNamesAlumni;
+    } else {
+      filterNames = this.props.filterNamesCompany;
+    }
+
     return <div>
         <SearchBar pathname={this.props.pathname} searchBarName={this.props.searchBarName} searchBarNameCompany={this.props.searchBarNameCompany}/>
         <div className="filter-button-overall-container">
-          {this.props.filterNames.map((filterName, index) => {
+          {filterNames.map((filterName, index) => {
             return <div key={index} className='filter-button-individual-container'>
               <FilterButton filterName={filterName} checkboxOptionDataToFilterContainer={this.checkboxOptionDataToFilterContainer}/>
             </div>
@@ -105,7 +114,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        filterNames: state.filterNames
+        filterNamesAlumni: state.filterNamesAlumni,
+        filterNamesCompany: state.filterNamesCompany,
     };
 };
 

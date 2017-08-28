@@ -86,3 +86,17 @@ export function branchFilterButtonClicked (answer) {
     answer
   }
 }
+export const pastFundingFilterClickAnswer = 'pastFundingFilterClickAnswer';
+export function pastFundingFilterButtonClicked (answer) {
+  return {
+    type: pastFundingFilterClickAnswer,
+    answer
+  }
+}
+export const stageFilterClickAnswer = 'stageFilterClickAnswer';
+export function stageFilterButtonClicked (answer) {
+  return {
+    type: stageFilterClickAnswer,
+    answer
+  }
+}
