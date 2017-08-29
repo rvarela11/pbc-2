@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchBarName, searchBarNameCompany, getResultsFromFilterButtons, techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked } from '../actions/index';
+import { searchBarName, searchBarNameCompany, getResultsFromFilterButtons, getResultsFromFilterButtonsCompany, techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked, pastFundingFilterButtonClicked, stageFilterButtonClicked } from '../actions/index';
 // import { Link } from 'react-router-dom';
 
 // Components
@@ -16,7 +16,12 @@ class FilterContainer extends Component {
       status: [],
       cohort: [],
       branch: []
-    }
+    },
+  filter_option_arrays_company: {
+    techstars: [],
+    funding: [],
+    stage:[]
+  }
   }
 
   render() {
@@ -47,12 +52,18 @@ class FilterContainer extends Component {
 
   checkboxOptionDataToFilterContainer = (checkboxName, checkboxValue, checkboxChecked) => {
     const filter_option_arrays = this.state.filter_option_arrays;
-      const filterProperties = ["techstars", "state", "cohort", "status", "branch"];
+    const filter_option_arrays_company = this.state.filter_option_arrays_company;
+      const filterProperties = ["techstars", "state", "cohort", "status", "branch", "pastFunding", "stage"];
       filterProperties.forEach((filterBy) => {
         if (filterBy === checkboxName && checkboxChecked){
           if (filterBy === "techstars"){
-            filter_option_arrays.techstars.push(checkboxValue);
-            this.setState({filter_option_arrays});
+            if (this.props.pathname === "/") {
+              filter_option_arrays.techstars.push(checkboxValue);
+              this.setState({filter_option_arrays});
+            } else {
+              filter_option_arrays_company.techstars.push(checkboxValue);
+              this.setState({filter_option_arrays_company});
+            }
           } else if (filterBy === "cohort"){
             filter_option_arrays.cohort.push(Number(checkboxValue));
             this.setState({filter_option_arrays});
@@ -62,11 +73,22 @@ class FilterContainer extends Component {
           } else if (filterBy === "branch"){
             filter_option_arrays.branch.push(Number(checkboxValue));
             this.setState({filter_option_arrays});
+          } else if (filterBy === "pastFunding") {
+            filter_option_arrays_company.funding.push(checkboxValue);
+            this.setState({filter_option_arrays_company});
+          } else if (filterBy === "stage") {
+            filter_option_arrays_company.stage.push(checkboxValue);
+            this.setState({filter_option_arrays_company});
           }
       }  else if (filterBy === checkboxName && !checkboxChecked){
         if (filterBy === "techstars"){
-          filter_option_arrays.techstars.splice(-1,1);
-          this.setState({filter_option_arrays});
+          if (this.props.pathname === "/") {
+            filter_option_arrays.techstars.splice(-1,1);
+            this.setState({filter_option_arrays});
+          } else {
+            filter_option_arrays_company.techstars.splice(-1,1);
+            this.setState({filter_option_arrays_company});
+          }
         } else if (filterBy === "cohort"){
           filter_option_arrays.cohort.splice(-1,1);
           this.setState({filter_option_arrays});
@@ -76,6 +98,12 @@ class FilterContainer extends Component {
         } else if (filterBy === "branch"){
           filter_option_arrays.branch.splice(-1,1);
           this.setState({filter_option_arrays});
+        } else if (filterBy === "pastFunding"){
+          filter_option_arrays_company.funding.splice(-1,1);
+          this.setState({filter_option_arrays_company});
+        } else if (filterBy === "stage"){
+          filter_option_arrays_company.stage.splice(-1,1);
+          this.setState({filter_option_arrays_company});
         }
       }
     })
@@ -83,19 +111,23 @@ class FilterContainer extends Component {
 
   searchButtonFilter = () => {
     this.props.getResultsFromFilterButtons(this.state.filter_option_arrays);
+    this.props.getResultsFromFilterButtonsCompany(this.state.filter_option_arrays_company);
+    console.log(this.state.filter_option_arrays_company);
   }
 
   resetResults = () => {
     if (this.props.pathname === "/") {
       this.props.resetResults();
+      this.props.techstarsFilterButtonClicked(false);
+      this.props.cohortFilterButtonClicked(false);
+      this.props.statusFilterButtonClicked(false);
+      this.props.branchFilterButtonClicked(false);
     } else {
       this.props.resetResultsCompany();
+      this.props.techstarsFilterButtonClicked(false);
+      this.props.pastFundingFilterButtonClicked(false);
+      this.props.stageFilterButtonClicked(false);
     }
-
-    this.props.techstarsFilterButtonClicked(false);
-    this.props.cohortFilterButtonClicked(false);
-    this.props.statusFilterButtonClicked(false);
-    this.props.branchFilterButtonClicked(false);
   }
 
 }
@@ -105,10 +137,13 @@ const mapDispatchToProps = (dispatch) => {
         searchBarName: (name) => dispatch(searchBarName(name)),
         searchBarNameCompany: (name) => dispatch(searchBarNameCompany(name)),
         getResultsFromFilterButtons: (data) => dispatch(getResultsFromFilterButtons(data)),
+        getResultsFromFilterButtonsCompany: (data) => dispatch(getResultsFromFilterButtonsCompany(data)),
         techstarsFilterButtonClicked: (status) => dispatch(techstarsFilterButtonClicked(status)),
         cohortFilterButtonClicked: (status) => dispatch(cohortFilterButtonClicked(status)),
         statusFilterButtonClicked: (status) => dispatch(statusFilterButtonClicked(status)),
         branchFilterButtonClicked: (status) => dispatch(branchFilterButtonClicked(status)),
+        pastFundingFilterButtonClicked: (status) => dispatch(pastFundingFilterButtonClicked(status)),
+        stageFilterButtonClicked: (status) => dispatch(stageFilterButtonClicked(status)),
     };
 };
 

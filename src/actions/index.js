@@ -39,7 +39,6 @@ export function searchBarName (name) {
 }
 export const SearchBarNameCompany = 'SearchBarNameCompany';
 export function searchBarNameCompany (name) {
-  console.log(name);
   const request = axios.get(`${ROOT_URL_COMPANY}/search/${name}`);
       return {
         type: SearchBarNameCompany,
@@ -52,6 +51,14 @@ export function getResultsFromFilterButtons (data) {
   const request = axios.post(`${ROOT_URL}/filters/`, data);
   return {
     type: GetResultsFromFilterButtons,
+    payload: request
+  }
+}
+export const GetResultsFromFilterButtonsCompany = 'GetResultsFromFilterButtonsCompany';
+export function getResultsFromFilterButtonsCompany (data) {
+  const request = axios.post(`${ROOT_URL_COMPANY}/filters/`, data);
+  return {
+    type: GetResultsFromFilterButtonsCompany,
     payload: request
   }
 }

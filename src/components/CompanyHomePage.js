@@ -23,7 +23,7 @@ class CompanyHomePage extends Component {
     } else {
       companies = this.props.results.companies;
     }
-
+    
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header pathname={this.props.location.pathname}/>

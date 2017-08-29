@@ -2,37 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked, pastFundingFilterButtonClicked, stageFilterButtonClicked } from '../actions/index';
 
-import FilterButtonOptionTechstar from './FilterButtonOptionTechstar';
-import FilterButtonOptionCohorts from './FilterButtonOptionCohorts';
-import FilterButtonOptionStatuses from './FilterButtonOptionStatuses';
-import FilterButtonOptionBranches from './FilterButtonOptionBranches';
-import FilterButtonOptionPastFunding from './FilterButtonOptionPastFunding';
-import FilterButtonOptionStage from './FilterButtonOptionStage';
+import FilterButtonOptions from './FilterButtonOptions';
 
 class FilterButton extends Component {
 
   render() {
-
-    let showRightOption;
-    switch (this.props.filterName) {
-      case 'TECHSTARS': showRightOption = <FilterButtonOptionTechstar checkboxOptionData={this.checkboxOptionData}/>;
-        break;
-      case 'COHORT': showRightOption = <FilterButtonOptionCohorts checkboxOptionData={this.checkboxOptionData}/>;
-        break;
-      case 'STATUS': showRightOption = <FilterButtonOptionStatuses checkboxOptionData={this.checkboxOptionData}/>;
-        break;
-      case 'BRANCH': showRightOption = <FilterButtonOptionBranches checkboxOptionData={this.checkboxOptionData}/>;
-        break;
-      case 'PAST FUNDING': showRightOption = <FilterButtonOptionPastFunding checkboxOptionData={this.checkboxOptionData}/>;
-        break;
-      case 'STAGE': showRightOption = <FilterButtonOptionStage checkboxOptionData={this.checkboxOptionData}/>;
-        break;
-      default:
-    }
-
     return <div>
       <h6 className="waves-effect waves-light btn black white-text filter-button" onClick={this.buttonClicked}> {this.props.filterName} </h6>
-      {showRightOption}
+      <FilterButtonOptions filterName={this.props.filterName} checkboxOptionData={this.checkboxOptionData}/>
     </div>
   }
 
