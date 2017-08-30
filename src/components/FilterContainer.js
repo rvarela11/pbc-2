@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchBarName, searchBarNameCompany, getResultsFromFilterButtons, getResultsFromFilterButtonsCompany, techstarsFilterButtonClicked, cohortFilterButtonClicked, statusFilterButtonClicked, branchFilterButtonClicked, pastFundingFilterButtonClicked, stageFilterButtonClicked } from '../actions/index';
-// import { Link } from 'react-router-dom';
+import { searchBarName, searchBarNameCompany, getResultsFromFilterButtons, getResultsFromFilterButtonsCompany, getResultsOnLoad, getCompanyResultsOnLoad } from '../actions/index';
 
 // Components
 import SearchBar from './SearchBar';
@@ -9,6 +8,7 @@ import FilterButton from './FilterButton';
 
 class FilterContainer extends Component {
 
+  // These objects are collected from the filter button options checkboxes and are used to make an API call
   state = {
   filter_option_arrays: {
       techstars: [],
@@ -28,8 +28,8 @@ class FilterContainer extends Component {
 
   render() {
 
+    // filterNames are being brought in from the reducer initial state
     let filterNames;
-
     if (this.props.pathname === "/") {
       filterNames = this.props.filterNamesAlumni;
     } else {
@@ -52,13 +52,13 @@ class FilterContainer extends Component {
     </div>
   }
 
+  // Function is checking for the checkboxName to push the correct information into the object set in the components inital state
   checkboxOptionDataToFilterContainer = (checkboxName, checkboxValue, checkboxChecked) => {
     const filter_option_arrays = this.state.filter_option_arrays;
     const filter_option_arrays_company = this.state.filter_option_arrays_company;
-      const filterProperties = ["techstars", "state", "cohort", "status", "branch", "pastFunding", "stage"];
-      filterProperties.forEach((filterBy) => {
-        if (filterBy === checkboxName && checkboxChecked){
-          if (filterBy === "techstars"){
+    if (checkboxChecked){
+        switch (checkboxName) {
+          case 'techstars':
             if (this.props.pathname === "/") {
               filter_option_arrays.techstars.push(checkboxValue);
               this.setState({filter_option_arrays});
@@ -66,24 +66,33 @@ class FilterContainer extends Component {
               filter_option_arrays_company.techstars.push(checkboxValue);
               this.setState({filter_option_arrays_company});
             }
-          } else if (filterBy === "cohort"){
+            break;
+          case 'cohort':
             filter_option_arrays.cohort.push(Number(checkboxValue));
             this.setState({filter_option_arrays});
-          }  else if (filterBy === "status"){
+            break;
+          case 'status':
             filter_option_arrays.status.push(Number(checkboxValue));
             this.setState({filter_option_arrays});
-          } else if (filterBy === "branch"){
+            break;
+          case 'branch':
             filter_option_arrays.branch.push(Number(checkboxValue));
             this.setState({filter_option_arrays});
-          } else if (filterBy === "pastFunding") {
+            break;
+          case 'pastFunding':
             filter_option_arrays_company.pastFunding.push(checkboxValue);
             this.setState({filter_option_arrays_company});
-          } else if (filterBy === "stage") {
+            break;
+          case 'stage':
             filter_option_arrays_company.stage.push(checkboxValue);
             this.setState({filter_option_arrays_company});
-          }
-      }  else if (filterBy === checkboxName && !checkboxChecked){
-        if (filterBy === "techstars"){
+            break;
+          default:
+            break;
+        }
+    } else {
+      switch (checkboxName) {
+        case 'techstars':
           if (this.props.pathname === "/") {
             filter_option_arrays.techstars.splice(-1,1);
             this.setState({filter_option_arrays});
@@ -91,26 +100,34 @@ class FilterContainer extends Component {
             filter_option_arrays_company.techstars.splice(-1,1);
             this.setState({filter_option_arrays_company});
           }
-        } else if (filterBy === "cohort"){
+          break;
+        case 'cohort':
           filter_option_arrays.cohort.splice(-1,1);
           this.setState({filter_option_arrays});
-        }  else if (filterBy === "status"){
+          break;
+        case 'status':
           filter_option_arrays.status.splice(-1,1);
           this.setState({filter_option_arrays});
-        } else if (filterBy === "branch"){
+          break;
+        case 'branch':
           filter_option_arrays.branch.splice(-1,1);
           this.setState({filter_option_arrays});
-        } else if (filterBy === "pastFunding"){
+          break;
+        case 'pastFunding':
           filter_option_arrays_company.pastFunding.splice(-1,1);
           this.setState({filter_option_arrays_company});
-        } else if (filterBy === "stage"){
+          break;
+        case 'stage':
           filter_option_arrays_company.stage.splice(-1,1);
           this.setState({filter_option_arrays_company});
-        }
+          break;
+        default:
+          break;
       }
-    })
+    }
   }
 
+  // Function that will pass the text from the input to make the correct API call
   searchButtonFilter = () => {
     if (this.props.pathname === "/") {
       this.props.getResultsFromFilterButtons(this.state.filter_option_arrays);
@@ -119,18 +136,12 @@ class FilterContainer extends Component {
     }
   }
 
+  // Function will make initial API call to get all results and set all buttons to false
   resetResults = () => {
     if (this.props.pathname === "/") {
-      this.props.resetResults();
-      this.props.techstarsFilterButtonClicked(false);
-      this.props.cohortFilterButtonClicked(false);
-      this.props.statusFilterButtonClicked(false);
-      this.props.branchFilterButtonClicked(false);
+      this.props.getResultsOnLoad();
     } else {
-      this.props.resetResultsCompany();
-      this.props.techstarsFilterButtonClicked(false);
-      this.props.pastFundingFilterButtonClicked(false);
-      this.props.stageFilterButtonClicked(false);
+      this.props.getCompanyResultsOnLoad();
     }
   }
 
@@ -142,12 +153,8 @@ const mapDispatchToProps = (dispatch) => {
         searchBarNameCompany: (name) => dispatch(searchBarNameCompany(name)),
         getResultsFromFilterButtons: (data) => dispatch(getResultsFromFilterButtons(data)),
         getResultsFromFilterButtonsCompany: (data) => dispatch(getResultsFromFilterButtonsCompany(data)),
-        techstarsFilterButtonClicked: (status) => dispatch(techstarsFilterButtonClicked(status)),
-        cohortFilterButtonClicked: (status) => dispatch(cohortFilterButtonClicked(status)),
-        statusFilterButtonClicked: (status) => dispatch(statusFilterButtonClicked(status)),
-        branchFilterButtonClicked: (status) => dispatch(branchFilterButtonClicked(status)),
-        pastFundingFilterButtonClicked: (status) => dispatch(pastFundingFilterButtonClicked(status)),
-        stageFilterButtonClicked: (status) => dispatch(stageFilterButtonClicked(status)),
+        getResultsOnLoad: () => dispatch(getResultsOnLoad()),
+        getCompanyResultsOnLoad: () => dispatch(getCompanyResultsOnLoad()),
     };
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCompanyResultsOnLoad, getResultsOnLoad, navClickedOption } from '../actions/index';
+import { getCompanyResultsOnLoad, navClickedOption } from '../actions/index';
 
 // Components
 import Nav from './Nav';
@@ -24,13 +24,11 @@ class CompanyHomePage extends Component {
       companies = this.props.results.companies;
     }
 
-    console.log(this.props.results);
-
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header pathname={this.props.location.pathname}/>
       <div className="search-filters-card-overall-container">
-        <FilterContainer resetResults={this.props.getResultsOnLoad} resetResultsCompany={this.props.getCompanyResultsOnLoad} pathname={this.props.location.pathname}/>
+        <FilterContainer pathname={this.props.location.pathname}/>
         <div className="card-overall-container">
           {companies.map((info, index) => {
             return (
@@ -44,15 +42,14 @@ class CompanyHomePage extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getCompanyResultsOnLoad: () => dispatch(getCompanyResultsOnLoad()),
         navClickedOption: (navOption) => dispatch(navClickedOption(navOption)),
-        getResultsOnLoad: () => dispatch(getResultsOnLoad()),
+        getCompanyResultsOnLoad: () => dispatch(getCompanyResultsOnLoad()),
     };
 };
 
 const mapStateToProps = (state) => {
     return {
-        results: state.results,
+        results: state.results
     };
 };
 

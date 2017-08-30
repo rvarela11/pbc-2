@@ -42,7 +42,7 @@ class FilterButtonOptions extends Component {
     const filterName = this.props.filterName;
     if (filterName === 'TECHSTARS') {
       return <div>
-          {this.props.techstarsFilterButtonClickedStatus &&
+          {this.props.show &&
             <div className="filter-column filter-label">
               {this.props.techstarsFilterOptions.map((info, index)=> {
                 return <div key={index}>
@@ -56,7 +56,7 @@ class FilterButtonOptions extends Component {
     }
     else if (filterName === 'COHORT') {
       return <div>
-        {this.props.cohortFilterButtonClickedStatus &&
+        {this.props.show &&
           <div className="filter-column filter-label" >
             {cohortsFilterOptions.map((info, index)=> {
               return <div key={index}>
@@ -70,7 +70,7 @@ class FilterButtonOptions extends Component {
     }
     else if (filterName === 'STATUS') {
       return <div>
-        {this.props.statusFilterButtonClickedStatus &&
+        {this.props.show &&
           <div className="filter-column filter-label" >
             {statusesFilterOptions.map((info, index)=> {
               return <div key={index}>
@@ -84,7 +84,7 @@ class FilterButtonOptions extends Component {
     }
     else if (filterName === 'BRANCH') {
       return <div>
-        {this.props.branchFilterButtonClickedStatus &&
+        {this.props.show &&
           <div className="filter-column filter-label" >
             {branchesFilterOptions.map((info, index)=> {
               return <div key={index}>
@@ -98,7 +98,7 @@ class FilterButtonOptions extends Component {
     }
     else if (filterName === 'PAST FUNDING') {
       return <div>
-        {this.props.pastFundingFilterButtonClickedStatus &&
+        {this.props.show &&
           <div className="filter-column filter-label">
             {fundingFilterOptions.map((info, index)=> {
               return <div key={index}>
@@ -112,7 +112,7 @@ class FilterButtonOptions extends Component {
     }
     else if (filterName === 'STAGE') {
       return <div>
-        {this.props.stageFilterButtonClickedStatus &&
+        {this.props.show &&
           <div className="filter-column filter-label">
             {stagesFilterOptions.map((info, index)=> {
               return <div key={index}>
@@ -132,12 +132,6 @@ const mapStateToProps = (state) => {
     return {
       techstarsFilterOptions: state.techstarsFilterOptions,
       filterButtonOptions: state.filterButtonOptions,
-      techstarsFilterButtonClickedStatus: state.techstarsFilterButtonClickedStatus,
-      cohortFilterButtonClickedStatus: state.cohortFilterButtonClickedStatus,
-      statusFilterButtonClickedStatus: state.statusFilterButtonClickedStatus,
-      branchFilterButtonClickedStatus: state.branchFilterButtonClickedStatus,
-      pastFundingFilterButtonClickedStatus: state.pastFundingFilterButtonClickedStatus,
-      stageFilterButtonClickedStatus: state.stageFilterButtonClickedStatus,
     };
 };
 
