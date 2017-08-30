@@ -46,6 +46,11 @@ export function reducer (state = initialState, action) {
         ...state,
         results: action.payload.data
     };
+    case 'GetResultsFromFilterButtonsCompany':
+    return {
+        ...state,
+        results: action.payload.data
+    };
     case 'techstarsFilterClickAnswer':
     return {
           ...state,

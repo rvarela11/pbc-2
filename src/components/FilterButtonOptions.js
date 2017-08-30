@@ -39,8 +39,6 @@ class FilterButtonOptions extends Component {
       stagesFilterOptions = this.props.filterButtonOptions.stages;
     }
 
-    
-
     const filterName = this.props.filterName;
     if (filterName === 'TECHSTARS') {
       return <div>

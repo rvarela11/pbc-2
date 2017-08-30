@@ -46,6 +46,8 @@ export function searchBarNameCompany (name) {
       }
 }
 
+// Data collected from the filter button option.
+
 export const GetResultsFromFilterButtons = 'GetResultsFromFilterButtons';
 export function getResultsFromFilterButtons (data) {
   const request = axios.post(`${ROOT_URL}/filters/`, data);
@@ -63,7 +65,7 @@ export function getResultsFromFilterButtonsCompany (data) {
   }
 }
 
-
+// Filter Buttons
 
 export const techstarsFilterClickAnswer = 'techstarsFilterClickAnswer';
 export function techstarsFilterButtonClicked (answer) {

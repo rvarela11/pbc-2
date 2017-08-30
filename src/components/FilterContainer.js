@@ -19,8 +19,10 @@ class FilterContainer extends Component {
     },
   filter_option_arrays_company: {
     techstars: [],
-    funding: [],
-    stage:[]
+    pastFunding: [],
+    stage:[],
+    state: [],
+    year: []
   }
   }
 
@@ -74,7 +76,7 @@ class FilterContainer extends Component {
             filter_option_arrays.branch.push(Number(checkboxValue));
             this.setState({filter_option_arrays});
           } else if (filterBy === "pastFunding") {
-            filter_option_arrays_company.funding.push(checkboxValue);
+            filter_option_arrays_company.pastFunding.push(checkboxValue);
             this.setState({filter_option_arrays_company});
           } else if (filterBy === "stage") {
             filter_option_arrays_company.stage.push(checkboxValue);
@@ -99,7 +101,7 @@ class FilterContainer extends Component {
           filter_option_arrays.branch.splice(-1,1);
           this.setState({filter_option_arrays});
         } else if (filterBy === "pastFunding"){
-          filter_option_arrays_company.funding.splice(-1,1);
+          filter_option_arrays_company.pastFunding.splice(-1,1);
           this.setState({filter_option_arrays_company});
         } else if (filterBy === "stage"){
           filter_option_arrays_company.stage.splice(-1,1);
@@ -110,9 +112,11 @@ class FilterContainer extends Component {
   }
 
   searchButtonFilter = () => {
-    this.props.getResultsFromFilterButtons(this.state.filter_option_arrays);
-    this.props.getResultsFromFilterButtonsCompany(this.state.filter_option_arrays_company);
-    console.log(this.state.filter_option_arrays_company);
+    if (this.props.pathname === "/") {
+      this.props.getResultsFromFilterButtons(this.state.filter_option_arrays);
+    } else {
+      this.props.getResultsFromFilterButtonsCompany(this.state.filter_option_arrays_company);
+    }
   }
 
   resetResults = () => {

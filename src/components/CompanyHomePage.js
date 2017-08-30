@@ -23,7 +23,9 @@ class CompanyHomePage extends Component {
     } else {
       companies = this.props.results.companies;
     }
-    
+
+    console.log(this.props.results);
+
     return <div>
       <Nav navClickedOption={this.props.navClickedOption}/>
       <Header pathname={this.props.location.pathname}/>
@@ -50,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        results: state.results
+        results: state.results,
     };
 };
 
